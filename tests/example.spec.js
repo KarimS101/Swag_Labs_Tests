@@ -8,7 +8,7 @@ test('has title', async ({ page }) => {
   await expect(page).toHaveTitle(/Playwright/);
 });
 
-test('get started link', async ({ page }) => {
+test('How to install Playwright', async ({ page }) => {
   await page.goto('https://playwright.dev/');
 
   // Click the get started link.
@@ -16,4 +16,13 @@ test('get started link', async ({ page }) => {
 
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+
+  // Click the how to install playwright link 
+  await page.getByRole('link', {name: 'How to install Playwright'}).click(); 
+
+  // Expects the page to hgave a heading with the name of Installing Playwright
+  await expect(page.getByRole('heading', { name: 'Installing Playwright' })).toBeVisible();
+
+
+
 });
