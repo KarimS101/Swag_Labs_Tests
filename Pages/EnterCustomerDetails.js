@@ -6,6 +6,7 @@ class enterCustomerDetailsPage{
 
         this.page = page
         this.hiThereHeader = "//div[contains(text(),'Hi there')]"
+        this.givenName = "//input[@id='fullName_givenName']"
 
       
 
@@ -15,6 +16,7 @@ class enterCustomerDetailsPage{
      async enterCustomerDetails(){
 
         await expect(this.hiThereHeader).toBeVisible 
+        await this.page.fill(this.givenName,"Mike")
      }
 
 

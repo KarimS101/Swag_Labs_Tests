@@ -13,6 +13,13 @@ test('Renters Happy path', async ({ page }) => {
     const customerDetails = new enterCustomerDetailsPage(page)
     await customerDetails.enterCustomerDetails()
 
+})
+
+test('Cannot start a quote with two properties', async ({ page }) => {
+    await page.goto('https://purchase.allstate.com/onlineshopping/welcome')
+
+    const welcome = new welcomePage(page)
+    await welcome.welcomePageTwoPropertyError()
 
 
 })
