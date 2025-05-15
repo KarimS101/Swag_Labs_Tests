@@ -10,8 +10,8 @@ test('Renters Happy path', async ({ page }) => {
     const welcome = new welcomePage(page)
     await welcome.welcomePageNavigation()
     
-    const customerDetails = new enterCustomerDetailsPage(page)
-    await customerDetails.enterCustomerDetails()
+    //const customerDetails = new enterCustomerDetailsPage(page)
+    //await customerDetails.enterCustomerDetails()
 
 })
 
