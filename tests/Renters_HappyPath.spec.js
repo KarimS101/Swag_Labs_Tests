@@ -32,3 +32,12 @@ test('Cannot start a quote with Renter/Condo', async ({ page }) => {
 
 
 })
+
+test('Cannot start a quote without entering ZIP', async ({ page }) => {
+    await page.goto('https://purchase.allstate.com/onlineshopping/welcome')
+
+    const welcome = new welcomePage(page)
+    await welcome.enterYourZipErrorMessage()
+
+
+})
