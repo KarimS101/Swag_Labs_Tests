@@ -19,7 +19,7 @@ test('Renters Happy path', async ({ page }) => {
 */
 
 test('Cannot start a quote with Renter/Home', async ({ page }) => {
-    await page.goto('https://purchase.allstate.com/onlineshopping/welcome')
+    await page.goto('https://purchase.allstate.com/onlineshopping/welcome', { waitUntil: 'load' })
 
     const welcome = new welcomePage(page)
     await welcome.welcomePageRenterHomeError()
@@ -28,7 +28,7 @@ test('Cannot start a quote with Renter/Home', async ({ page }) => {
 })
 
 test('Cannot start a quote with Renter/Condo', async ({ page }) => {
-    await page.goto('https://purchase.allstate.com/onlineshopping/welcome')
+    await page.goto('https://purchase.allstate.com/onlineshopping/welcome', { waitUntil: 'load' })
 
     const welcome = new welcomePage(page)
     await welcome.welcomePageRenterCondoError()
@@ -37,7 +37,7 @@ test('Cannot start a quote with Renter/Condo', async ({ page }) => {
 })
 
 test('Cannot start a quote without entering ZIP', async ({ page }) => {
-    await page.goto('https://purchase.allstate.com/onlineshopping/welcome')
+    await page.goto('https://purchase.allstate.com/onlineshopping/welcome', { waitUntil: 'load' })
 
     const welcome = new welcomePage(page)
     await welcome.enterYourZipErrorMessage()
@@ -46,7 +46,7 @@ test('Cannot start a quote without entering ZIP', async ({ page }) => {
 })
 
 test('Cannot start a quote without seleting a product', async ({ page }) => {
-    await page.goto('https://purchase.allstate.com/onlineshopping/welcome')
+    await page.goto('https://purchase.allstate.com/onlineshopping/welcome', { waitUntil: 'load' })
 
     const welcome = new welcomePage(page)
     await welcome.welcomePageAtLeaseOneProducterror()
