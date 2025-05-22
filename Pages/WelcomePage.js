@@ -23,6 +23,7 @@ class welcomePage{
      async enterYourZipErrorMessage(){
 
       await expect(this.disableCookie).toBeVisible
+      await expect(this.selectRenters).toBeVisible
       await this.page.click(this.disableCookie)
       await this.page.click(this.selectAuto)
       await this.page.click(this.startMyQuoteBtn)
@@ -32,6 +33,7 @@ class welcomePage{
      async welcomePageNavigation(){
 
         await expect(this.disableCookie).toBeVisible
+        await expect(this.selectRenters).toBeVisible
         await this.page.click(this.disableCookie)
         await this.page.click(this.selectRenters)
         await this.page.fill(this.enterZip,"60025")
@@ -41,6 +43,7 @@ class welcomePage{
 
      async welcomePageRenterHomeError(){
         await expect(this.disableCookie).toBeVisible
+        await expect(this.selectRenters).toBeVisible
         await this.page.click(this.disableCookie)
         await this.page.click(this.selectRenters)
         await this.page.click(this.selectHome)
@@ -51,6 +54,7 @@ class welcomePage{
 
      async welcomePageRenterCondoError(){
         await expect(this.disableCookie).toBeVisible
+        await expect(this.selectRenters).toBeVisible
         await this.page.click(this.disableCookie)
         await this.page.click(this.selectRenters)
         await this.page.click(this.selectCondo)
@@ -61,6 +65,7 @@ class welcomePage{
 
      async welcomePageAtLeaseOneProducterror(){
       await expect(this.disableCookie).toBeVisible
+      await expect(this.selectRenters).toBeVisible
       await this.page.click(this.disableCookie)
       await this.page.click(this.startMyQuoteBtn)
       await expect(this.enterAtLeastOnePoductError).toBeVisible
