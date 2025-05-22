@@ -14,6 +14,7 @@ class welcomePage{
         this.disableCookie = "//button[contains(text(),'Continue')]"
         this.multiplePropertyError = "//*[contains(text(),' You can only choose one property. Please try again.')]"
         this.EnterYourZipError = "//span[contains(text(),'Please enter your ZIP code.')]"
+        this.enterAtLeastOnePoductError = "//*[contains(text(),' Please select at least one product to continue.')]"
       
 
 
@@ -57,6 +58,13 @@ class welcomePage{
         await this.page.click(this.startMyQuoteBtn)
         await expect(this.multiplePropertyError).toBeVisible
      }
+
+     async welcomePageAtLeaseOneProducterror(){
+      await expect(this.disableCookie).toBeVisible
+      await this.page.click(this.disableCookie)
+      await this.page.click(this.startMyQuoteBtn)
+      await expect(this.enterAtLeastOnePoductError).toBeVisible
+   }
 
 }
 
