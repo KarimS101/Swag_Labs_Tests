@@ -15,6 +15,7 @@ class enterCustomerDetailsPage{
         this.state = "//input[@id='insuredAddress_stateProvName']"
         this.zipCode = "//input[@id='insuredAddress_postalCode']"
         this.startOverText = "//*[contains(text(),'If you would like to change your state or ZIP code, you can')]"
+        this.getStartedBtn = "//button[@id='PREFILL_PARTICIPANT-btn']"
 
      }
 
@@ -27,6 +28,8 @@ class enterCustomerDetailsPage{
         await this.page.fill(this.addressLine,"1 Main St")
         await this.page.fill(this.city,"Chicago")
         await expect(this.startOverText).toBeVisible
+        await this.page.click(this.getStartedBtn)
+
 
 
      }
