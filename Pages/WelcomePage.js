@@ -15,6 +15,7 @@ class welcomePage{
         this.multiplePropertyError = "//*[contains(text(),' You can only choose one property. Please try again.')]"
         this.EnterYourZipError = "//span[contains(text(),'Please enter your ZIP code.')]"
         this.enterAtLeastOnePoductError = "//*[contains(text(),' Please select at least one product to continue.')]"
+        this.LogIntoMyAccountLink = "//*[contains(text(),'Log in to My Account')]"
       
 
 
@@ -69,6 +70,15 @@ class welcomePage{
       await this.page.click(this.disableCookie)
       await this.page.click(this.startMyQuoteBtn)
       await expect(this.enterAtLeastOnePoductError).toBeVisible
+   }
+
+
+
+   async myAccountLink(){
+      await expect(this.disableCookie).toBeVisible
+      await expect(this.LogIntoMyAccountLink).toBeVisible
+      await this.page.click(this.LogIntoMyAccountLink)
+      await this.page.goto('https://myaccountrwd.allstate.com/anon/account/login'); // Replace with your actual URL
    }
 
 }
