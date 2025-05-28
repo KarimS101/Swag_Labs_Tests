@@ -9,6 +9,7 @@ class myAccountHomePage{
         this.myAccountPasswordField = page.locator("//input[@id='password']").first();
         this.logInBtn = page.locator("//button[@name='frmButton']").first();
         this.myAccountLoginError = page.locator('#serverErrors');
+        this.registerLink = page.locator("//a[@id='registerLink']").first()
       }
 
      async validateMyAccountHomePage(){
@@ -18,7 +19,7 @@ class myAccountHomePage{
      }
 
      async validateMyAccountLoginError() {
-        //await expect(this.myAccountWelcomeHeader).toBeVisible();
+        
         await expect(this.myAccountUserNameField).toBeVisible();
         // Fill directly using locators
         await this.myAccountUserNameField.fill("Abc");
@@ -29,6 +30,12 @@ class myAccountHomePage{
         await expect(this.myAccountLoginError).toBeVisible();
       }
 
+      async clickRegisterLink(){
+        this.page.waitForLoadState("domcontentloaded")
+        await expect(this.myAccountWelcomeHeader).toBeVisible
+        await this.registerLink.click();
+
+     }
 
 
      }

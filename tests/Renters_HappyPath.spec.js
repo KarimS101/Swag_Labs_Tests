@@ -4,8 +4,13 @@ import welcomePage from '../Pages/WelcomePage';
 import enterCustomerDetailsPage from '../Pages/EnterCustomerDetails';
 import creditNoHitPage from '../Pages/creditNoHit';
 import myAccountHomePage from '../Pages/myAccountHomePage';
+import myAccountCreateAccountPage from '../Pages/myAccountCreateAccountPage';
+
+
 
 /*
+-- Commenting out this TC due to flaky issue with allstate.com --
+
 test('Renters Happy path', async ({ page }) => {
     await page.goto('https://purchase.allstate.com/onlineshopping/welcome')
 
@@ -18,30 +23,10 @@ test('Renters Happy path', async ({ page }) => {
     const creditNoHit = new creditNoHitPage(page)
     await creditNoHit.validateCreditNoHit()
 
-
 })
+
 
 */
-
-test('MyAccount Login Link Launches MyAccount Window', async ({ page }) => {
-
-    await page.goto('https://purchase.allstate.com/onlineshopping/welcome')
-
-    const welcome = new welcomePage(page)
-    await welcome.myAccountLink()
-
-    const [newPage] = await Promise.all([
-        page.waitForEvent("popup") 
-
-    ]
-    )
-
-    newPage.waitForLoadState("domcontentloaded")
-    const myaccount = new myAccountHomePage(newPage)
-    await myaccount.validateMyAccountLoginError()
-
-})
-
 
 test('Cannot start a quote with Renter/Home', async ({ page }) => {
     await page.goto('https://purchase.allstate.com/onlineshopping/welcome', { waitUntil: 'load' })
@@ -78,4 +63,51 @@ test('Cannot start a quote without seleting a product', async ({ page }) => {
 
 
 })
+
+test('MyAccount - Attempt to Login with invalid username and Password - validate Error', async ({ page }) => {
+
+    await page.goto('https://purchase.allstate.com/onlineshopping/welcome')
+
+    const welcome = new welcomePage(page)
+    await welcome.myAccountLink()
+
+    const [newPage] = await Promise.all([
+        page.waitForEvent("popup") 
+
+    ]
+    )
+
+    newPage.waitForLoadState("domcontentloaded")
+    const myaccount = new myAccountHomePage(newPage)
+    await myaccount.validateMyAccountLoginError()
+
+})
+
+
+
+test('MyAccount - Attempt to Register an indivudal account with invalid details  - Validate Error', async ({page}) =>{
+    await page.goto('https://purchase.allstate.com/onlineshopping/welcome')
+
+    const welcome = new welcomePage(page)
+    await welcome.myAccountLink()
+
+    const [newPage] = await Promise.all([
+        page.waitForEvent("popup") 
+
+    ]
+    )
+
+    newPage.waitForLoadState("domcontentloaded")
+    const myaccount = new myAccountHomePage(newPage)
+    await myaccount.clickRegisterLink()
+
+    const createAccount = new myAccountCreateAccountPage(newPage)
+    await createAccount.validateCreateAccountError()
+
+
+}
+
+
+
+)
 
