@@ -20,10 +20,19 @@ class myAccountCreateAccountPage{
 
      }
 
-     async validateCreateAccountError(){
+     async validateCreateAccountErrorIndividual(){
 
         await expect(this.createAccountHeader).toBeVisible();
         await this.individualAccount.click();
+        await this.continueBtn.click();
+        await expect(this.myAccountRegValidationErrors).toBeVisible();
+
+     }
+
+     async validateCreateAccountErrorBusiness(){
+
+        await expect(this.createAccountHeader).toBeVisible();
+        await this.businessAccount.click();
         await this.continueBtn.click();
         await expect(this.myAccountRegValidationErrors).toBeVisible();
 

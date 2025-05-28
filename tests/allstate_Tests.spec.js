@@ -25,8 +25,8 @@ test('Renters Happy path', async ({ page }) => {
 
 })
 
-
 */
+
 
 test('Cannot start a quote with Renter/Home', async ({ page }) => {
     await page.goto('https://purchase.allstate.com/onlineshopping/welcome', { waitUntil: 'load' })
@@ -84,8 +84,7 @@ test('MyAccount - Attempt to Login with invalid username and Password - validate
 })
 
 
-
-test('MyAccount - Attempt to Register an indivudal account with invalid details  - Validate Error', async ({page}) =>{
+test('MyAccount - Attempt to Register an indivudal account leaving required fields blank  - Validate Error', async ({page}) =>{
     await page.goto('https://purchase.allstate.com/onlineshopping/welcome')
 
     const welcome = new welcomePage(page)
@@ -102,12 +101,33 @@ test('MyAccount - Attempt to Register an indivudal account with invalid details 
     await myaccount.clickRegisterLink()
 
     const createAccount = new myAccountCreateAccountPage(newPage)
-    await createAccount.validateCreateAccountError()
+    await createAccount.validateCreateAccountErrorIndividual()
 
 
-}
+})
 
 
 
-)
+test('MyAccount - Attempt to Register an Business account leaving required fields blank  - Validate Error', async ({page}) =>{
+    await page.goto('https://purchase.allstate.com/onlineshopping/welcome')
+
+    const welcome = new welcomePage(page)
+    await welcome.myAccountLink()
+
+    const [newPage] = await Promise.all([
+        page.waitForEvent("popup") 
+
+    ]
+    )
+
+    newPage.waitForLoadState("domcontentloaded")
+    const myaccount = new myAccountHomePage(newPage)
+    await myaccount.clickRegisterLink()
+
+    const createAccount = new myAccountCreateAccountPage(newPage)
+    await createAccount.validateCreateAccountErrorBusiness()
+
+
+})
+
 
