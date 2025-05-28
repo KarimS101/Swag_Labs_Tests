@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 import welcomePage from '../Pages/WelcomePage';
 import enterCustomerDetailsPage from '../Pages/EnterCustomerDetails';
 import creditNoHitPage from '../Pages/creditNoHit';
-import myAccontHomePage from '../Pages/myAccountHomePage';
+import myAccountHomePage from '../Pages/myAccountHomePage';
 
 /*
 test('Renters Happy path', async ({ page }) => {
@@ -24,15 +24,21 @@ test('Renters Happy path', async ({ page }) => {
 */
 
 test('MyAccount Login Link Launches MyAccount Window', async ({ page }) => {
+
     await page.goto('https://purchase.allstate.com/onlineshopping/welcome')
 
     const welcome = new welcomePage(page)
     await welcome.myAccountLink()
 
-    const myaccount = new myAccontHomePage(page)
-    await myaccount.validateMyAccountHomePage()
+    const [newPage] = await Promise.all([
+        page.waitForEvent("popup") 
 
+    ]
+    )
 
+    newPage.waitForLoadState("domcontentloaded")
+    const myaccount = new myAccountHomePage(newPage)
+    await myaccount.validateMyAccountLoginError()
 
 })
 

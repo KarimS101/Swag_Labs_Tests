@@ -21,7 +21,7 @@ class enterCustomerDetailsPage{
 
      async enterHappyPathCustomerDetails(){
 
-        await expect(this.hiThereHeader).toBeVisible 
+        await expect(this.hiThereHeader).toBeVisible
         await this.page.fill(this.givenName,"Mike")
         await this.page.fill(this.surName,"Smith")
         await this.page.fill(this.birthDate,"01-01-1990")

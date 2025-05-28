@@ -16,6 +16,9 @@ class welcomePage{
         this.EnterYourZipError = "//span[contains(text(),'Please enter your ZIP code.')]"
         this.enterAtLeastOnePoductError = "//*[contains(text(),' Please select at least one product to continue.')]"
         this.LogIntoMyAccountLink = "//*[contains(text(),'Log in to My Account')]"
+
+
+
       
 
 
@@ -78,8 +81,11 @@ class welcomePage{
       await expect(this.disableCookie).toBeVisible
       await expect(this.LogIntoMyAccountLink).toBeVisible
       await this.page.click(this.LogIntoMyAccountLink)
-      await this.page.goto('https://myaccountrwd.allstate.com/anon/account/login'); // Replace with your actual URL
+      
+ 
    }
+
+
 
 }
 
