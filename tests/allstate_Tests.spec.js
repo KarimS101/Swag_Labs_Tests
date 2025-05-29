@@ -31,6 +31,11 @@ test.describe('Quote Start Validation', () => {
   test('Should show user an error when no product is selected', async () => {
     await welcome.welcomePageAtLeaseOneProducterror();
   })
+test('Expect Save upto 25% when you bundle Message appears when Auto & Home are selected', async () =>{
+    await welcome.saveWhenBundleMessage()
+
+})
+
 })
 
 test.describe('MyAccount Flow Validation', () => {
@@ -70,4 +75,6 @@ test.describe('MyAccount Flow Validation', () => {
     const createAccount = new myAccountCreateAccountPage(newPage);
     await createAccount.validateCreateAccountErrorBusiness();
   })
+
+  
 })

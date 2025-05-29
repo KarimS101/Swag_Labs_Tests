@@ -16,11 +16,7 @@ class welcomePage{
         this.EnterYourZipError = "//span[contains(text(),'Please enter your ZIP code.')]"
         this.enterAtLeastOnePoductError = "//*[contains(text(),' Please select at least one product to continue.')]"
         this.LogIntoMyAccountLink = "//*[contains(text(),'Log in to My Account')]"
-
-
-
-      
-
+        this.saveWhenYouBundle = page.locator("//div[contains(text(),'Save up to 25% when you bundle*')]")
 
      }
 
@@ -74,17 +70,20 @@ class welcomePage{
       await this.page.click(this.startMyQuoteBtn)
       await expect(this.enterAtLeastOnePoductError).toBeVisible
    }
-
-
-
    async myAccountLink(){
       await expect(this.disableCookie).toBeVisible
       await expect(this.LogIntoMyAccountLink).toBeVisible
-      await this.page.click(this.LogIntoMyAccountLink)
-      
- 
+      await this.page.click(this.LogIntoMyAccountLink)  
    }
 
+     async saveWhenBundleMessage(){
+        await expect(this.disableCookie).toBeVisible
+        await expect(this.selectRenters).toBeVisible
+        await this.page.click(this.disableCookie)
+        await this.page.click(this.selectAuto)
+        await this.page.click(this.selectHome)
+        await expect(this.saveWhenYouBundle).toBeVisible();
+     }
 
 
 }
