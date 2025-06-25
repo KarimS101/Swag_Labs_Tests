@@ -1,6 +1,6 @@
 const {expect} = require ("@playwright/test")
 
-class loginPage{
+class SwagLabs_Login{
     constructor(page)
     {
             this.page = page
@@ -20,13 +20,13 @@ class loginPage{
         await expect(this.loginError).toBeVisible
 
      }
-
-     async valitateLockedUser(){
+     
+     async validateLockedUser(){
 
         await expect(this.swagLabHeader).toBeVisible();
         await this.username.fill("locked_out_user");
         await this.password.fill("secret_sauce");
-        await this.loginBtn.click()
+        await this.loginBtn.click();
         await expect(this.lockedOutError).toBeVisible
 
      }
@@ -34,4 +34,4 @@ class loginPage{
 
 }
 
-module.exports=loginPage; 
+module.exports=SwagLabs_Login; 
