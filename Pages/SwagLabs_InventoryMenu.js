@@ -14,12 +14,10 @@ class SwagLabs_Inventory{
             this.shoppingCartContainer = page.locator('#shopping_cart_container');
             
 
-           
 //Items
             this.backpackItem = "//div[contains(text(),'Sauce Labs Backpack')]"
+            this.bikeLight = "//div[contains(text(),'Sauce Labs Bike Light')]"
             this.addToCart = page.locator('#add-to-cart');
-            
-            
             
         
     }
@@ -31,9 +29,21 @@ class SwagLabs_Inventory{
      async selectBackPack(){
         await this.page.click(this.backpackItem)
         await this.addToCart.click();
-        await expect(this.oneItemAdded).toBeVisible
-        await this.shoppingCartContainer.click()
 
+     }
+
+     async selectBikeLight(){
+        await this.page.click(this.bikeLight)
+        await this.addToCart.click();
+     }
+
+
+     async selectShoppingCartContainer(){
+        await this.shoppingCartContainer.click()
+     }
+
+     async selectBackToProducts(){
+        await this.backToProductsLink.click()
      }
 
      async logOut(){
