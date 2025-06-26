@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 import SwagLabs_Login from '../Pages/SwagLabs_Login';
 import SwagLabs_InventoryMenu from '../Pages/SwagLabs_InventoryMenu';
 
-/*
+
 test('Validate Login Error when no username or password is entered and login is selected', async ({ page }) => {
     await page.goto('https://www.saucedemo.com/');
     const login = new SwagLabs_Login(page)
@@ -62,7 +62,7 @@ test('Validate Login Error when no username or password is entered and login is 
 
   });
 
-  */
+  
 
   test('Validate Price (high to low) sorting on inventory page', async ({ page }) => {
     await page.goto('https://www.saucedemo.com/');
