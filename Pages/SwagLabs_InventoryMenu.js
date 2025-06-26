@@ -12,6 +12,9 @@ class SwagLabs_Inventory{
             this.removeItem = page.locator('#remove');
             this.backToProductsLink = page.locator('#back-to-products');
             this.shoppingCartContainer = page.locator('#shopping_cart_container');
+            this.sortDropdown = page.locator('[data-test="product-sort-container"]');
+            this.itemPrices = page.locator('.inventory_item_price');
+          
             
 
 //Items
@@ -45,6 +48,18 @@ class SwagLabs_Inventory{
      async selectBackToProducts(){
         await this.backToProductsLink.click()
      }
+
+     async selectSortOption(value) {
+        // value: "az", "za", "lohi", "hilo"
+        await this.page.locator('[data-test="product-sort-container"]').waitFor({ state: 'visible' });
+        await this.sortDropdown.selectOption(value);
+
+      }
+
+      async getAllItemPrices() {
+        const priceTexts = await this.itemPrices.allTextContents();
+        return priceTexts.map(text => parseFloat(text.replace('$', '')));
+      }
 
      async logOut(){
         await this.menuBtn.click();
