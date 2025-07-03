@@ -8,7 +8,8 @@ class SwagLabs_Inventory{
             this.inventoryMenu = page.locator('#inventory_container');
             this.menuBtn = page.locator('#react-burger-menu-btn');
             this.logoutBtn = page.locator('#logout_sidebar_link');
-            this.oneItemAdded = "//span[contains(text(),'1')]"
+            this.aboutBtn = page.locator('#about_sidebar_link');
+            this.oneItemAdded = "//span[contains(text(),'1')]";
             this.removeItem = page.locator('#remove');
             this.backToProductsLink = page.locator('#back-to-products');
             this.shoppingCartContainer = page.locator('#shopping_cart_container');
@@ -18,8 +19,8 @@ class SwagLabs_Inventory{
             
 
 //Items
-            this.backpackItem = "//div[contains(text(),'Sauce Labs Backpack')]"
-            this.bikeLight = "//div[contains(text(),'Sauce Labs Bike Light')]"
+            this.backpackItem = "//div[contains(text(),'Sauce Labs Backpack')]";
+            this.bikeLight = "//div[contains(text(),'Sauce Labs Bike Light')]";
             this.addToCart = page.locator('#add-to-cart');
             
         
@@ -61,9 +62,15 @@ class SwagLabs_Inventory{
         return priceTexts.map(text => parseFloat(text.replace('$', '')));
       }
 
+      async selectAbout(){
+         await this.menuBtn.click();
+         await this.aboutBtn.click();
+         await this.page.locator("//h1[contains(text(),'Build apps users love with AI-driven insights')]").waitFor({ state: 'visible' });
+      }
+
      async logOut(){
         await this.menuBtn.click();
-        await this.logoutBtn.click();
+        await this.aboutBtn.click();
      }
 }
 

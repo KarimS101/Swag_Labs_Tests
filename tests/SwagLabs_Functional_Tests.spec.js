@@ -95,5 +95,18 @@ test('Validate Login Error when no username or password is entered and login is 
 
   });
 
+ 
+  test('Validate user can login successfully and select the about button', async ({ page }) => {
+    await page.goto('https://www.saucedemo.com/');
+    const login = new SwagLabs_Login(page)
+    await login.validUserLogin()
+
+    const inventoryMenu = new SwagLabs_InventoryMenu(page)
+    await inventoryMenu.validateInvenoryPage()
+    await inventoryMenu.selectAbout()
+
+
+  });
+
 
 
