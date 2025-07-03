@@ -70,7 +70,8 @@ class SwagLabs_Inventory{
 
      async logOut(){
         await this.menuBtn.click();
-        await this.aboutBtn.click();
+        await this.logoutBtn.click();
+   
      }
 }
 
